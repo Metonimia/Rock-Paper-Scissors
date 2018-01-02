@@ -12,7 +12,7 @@ pickRock.addEventListener('click', function() { playerPick('Rock') });
 pickPaper.addEventListener('click', function() { playerPick('Paper') });
 pickScissors.addEventListener('click', function() { playerPick('Scissors') });
 
-var gameState = 'notStarted',  //started // ended
+var gameState = 'notStarted',
     player = {
         name: '',
         score: 0
@@ -26,7 +26,7 @@ var newGameElem = document.getElementById('js-newGameElement'),
     resultsElem = document.getElementById('js-resultsTableElement');
 
 function newGame() {
-  player.name = prompt('Please enter your name', 'imię gracza');
+  player.name = prompt('Please enter your name', 'Your name');
   if (player.name) {
     player.score = computer.score = 0;
     gameState = 'started';
@@ -47,6 +47,8 @@ function setGameElements() {
       break;
     case 'ended':
         newGameBtn.innerText = 'Once again';
+        playerResultElem.innerHTML = computerResultElem.innerHTML = '';
+        playerPickElem.innerHTML = computerPickElem.innerHTML = '';
     case 'notStarted':
     default:
         newGameElem.style.display = 'block';
